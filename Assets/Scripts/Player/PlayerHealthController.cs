@@ -17,60 +17,31 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private int _startingHealth = 100;
     [SerializeField] private int _currentHealth;
 
-    public Slider healthSlider;
-    public Image damageImage;
-    public AudioClip deathClip;
+    private bool isDead;
 
-    public float flashSpeed = 5f;
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
-
-
-    bool isDead;
-    bool damaged;
-
-
-    private void Start()
+    private void Awake()
     {
         _currentHealth = _startingHealth;
     }
 
-    void Update()
-    {
-        if (damaged)
-        {
-            damageImage.color = flashColour;
-        }
-        else
-        {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
-
-        damaged = false;
-    }
-
-
     public void TakeDamage(int amount)
     {
-        damaged = true;
+        var eventDataRequest = new GetDamageEvent();
+        EventStream.Game.Publish(eventDataRequest);
 
         _currentHealth -= amount;
 
-        healthSlider.value = _currentHealth;
+        var eventDataRequest2 = new GetCurrentHealthEvent(_currentHealth);
+        EventStream.Game.Publish(eventDataRequest2);
 
-        var eventDataRequest = new GetEnemyTakeDamageEvent();
-        EventStream.Game.Publish(eventDataRequest);
+        var eventDataRequest3 = new GetEnemyTakeDamageEvent();
+        EventStream.Game.Publish(eventDataRequest3);
 
         if (_currentHealth <= 0 && !isDead)
         {
             Death();
         }
     }
-
-    private void TakeHealthBonus(int amount)
-    {
-        _currentHealth += amount;
-        healthSlider.value = _currentHealth;
-    }           
 
     void Death()
     {
@@ -85,7 +56,6 @@ public class PlayerHealthController : MonoBehaviour
         _playerShooting.enabled = false;
     }
 
-    [UsedImplicitly]
     private void OnCollisionEnter(Collision heart)
     {
         if (heart.collider.CompareTag("Heart"))
@@ -97,6 +67,13 @@ public class PlayerHealthController : MonoBehaviour
                 _currentHealth = 100;
             }
         }
+    }
+
+    private void TakeHealthBonus(int amount)
+    {
+        _currentHealth += amount;
+        var eventDataRequest = new GetCurrentHealthEvent(_currentHealth);
+        EventStream.Game.Publish(eventDataRequest);
     }
 
     public void RestartLevel()

@@ -1249,6 +1249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec45203ae7a1a54c9d02c355f983833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &702371793 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9569124, guid: 9b9e637bcdb822540b6927d7936c5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 702371790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &714004005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +1987,8 @@ MonoBehaviour:
   healthSlider: {fileID: 1273611591}
   damageImage: {fileID: 1913536421}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
+  anim: {fileID: 702371793}
+  playerAudio: {fileID: 1340605860}
 --- !u!1 &1733441410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd,
@@ -2046,7 +2054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthController: {fileID: 0}
+  playerHealthController: {fileID: 1340605865}
   _enemy: {fileID: 11474866, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 3}
   _spawnTime: 3
   _spawnPoints:
