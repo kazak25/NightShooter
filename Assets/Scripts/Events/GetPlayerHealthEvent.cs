@@ -5,11 +5,11 @@ namespace Events
 {
     public class GetPlayerHealthEvent : EventBase
     {
-        public PlayerHealth PlayerHealth { get; }
+        public PlayerHealthController PlayerHealthController { get; }
 
-        public GetPlayerHealthEvent(PlayerHealth playerHealth)
+        public GetPlayerHealthEvent(PlayerHealthController playerHealthController)
         {
-            PlayerHealth = playerHealth;
+            PlayerHealthController = playerHealthController;
         }
         
     }

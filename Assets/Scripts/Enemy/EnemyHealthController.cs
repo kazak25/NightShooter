@@ -58,9 +58,7 @@ public class EnemyHealthController : MonoBehaviour
         isDead = true;
 
         capsuleCollider.isTrigger = true;
-
-        // var eventDataRequest = new GetEnemyDeadEvent();
-        // EventStream.Game.Publish(eventDataRequest);
+        
         EnemyDieEvent.Invoke();
         var eventDataRequest2 = new GetEnemyAudioDeadEvent();
         EventStream.Game.Publish(eventDataRequest2);

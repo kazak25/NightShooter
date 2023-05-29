@@ -13,16 +13,16 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyHealthController _enemyHealthController;
     [SerializeField] private EnemyMovement _enemyMovement;
 
-    private PlayerHealth _playerHealth;
+    private PlayerHealthController _playerHealthController;
     private bool _playerInRange;
     private float _timer;
     private CompositeDisposable _subscription;
 
 
-    public void Initialize(PlayerHealth playerHealth)
+    public void Initialize(PlayerHealthController playerHealthController)
     {
-        _playerHealth = playerHealth;
-        _enemyMovement.Initialize(playerHealth);
+        _playerHealthController = playerHealthController;
+        _enemyMovement.Initialize(playerHealthController);
     }
 
     void OnTriggerEnter(Collider other)
@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour
             Attack();
         }
 
-        if (_playerHealth.currentHealth <= 0)
+        if (_playerHealthController.CurrentHealth <= 0)
         {
             var eventDataRequest = new GetPlayerDeadEvent();
             EventStream.Game.Publish(eventDataRequest);
@@ -63,9 +63,9 @@ public class EnemyController : MonoBehaviour
     {
         _timer = 0f;
 
-        if (_playerHealth.currentHealth > 0)
+        if (_playerHealthController.CurrentHealth > 0)
         {
-            _playerHealth.TakeDamage(attackDamage);
+            _playerHealthController.TakeDamage(attackDamage);
         }
     }
 

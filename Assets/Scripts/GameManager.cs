@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private PlayerHealthController playerHealthController;
     [SerializeField] private Transform _playerPoint;
 
     // private void Start()

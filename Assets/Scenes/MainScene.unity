@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c286994c0b817a64b84560c727df9d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 1340605865}
+  playerHealthController: {fileID: 1340605865}
   _playerPoint: {fileID: 1340605859}
 --- !u!4 &62849552
 Transform:
@@ -1158,6 +1158,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1273611591}
     - target: {fileID: 11479542, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
+      propertyPath: _playerMovement
+      value: 
+      objectReference: {fileID: 702371792}
+    - target: {fileID: 11479542, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
+      propertyPath: _playerShooting
+      value: 
+      objectReference: {fileID: 702371791}
+    - target: {fileID: 11479542, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
       propertyPath: HeartDestroyed.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1217,6 +1225,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
+--- !u!114 &702371791 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11447694, guid: 9b9e637bcdb822540b6927d7936c5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 702371790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &702371792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11436894, guid: 9b9e637bcdb822540b6927d7936c5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 702371790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340605858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec45203ae7a1a54c9d02c355f983833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &714004005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,7 +1717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c9e0011c2ed97428a4efc03b455359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1340605865}
+  playerHealthController: {fileID: 1340605865}
 --- !u!1 &1184483494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,6 +1966,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544f2064df03e95419b4a5147c506b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1340605866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340605858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1c72c60e6cfb84db3586d6df9915d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 1273611591}
+  damageImage: {fileID: 1913536421}
+  deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
 --- !u!1 &1733441410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd,
@@ -1999,7 +2046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 1340605865}
+  playerHealthController: {fileID: 0}
   _enemy: {fileID: 11474866, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 3}
   _spawnTime: 3
   _spawnPoints:
@@ -2031,7 +2078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 1340605865}
+  playerHealthController: {fileID: 1340605865}
   _enemy: {fileID: 11492174, guid: d8e4a57e81b8ed1448c188f3f17fdcc6, type: 3}
   _spawnTime: 3
   _spawnPoints:
@@ -2048,7 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 1340605865}
+  playerHealthController: {fileID: 1340605865}
   _enemy: {fileID: 11400004, guid: ffdde77c7de2ec246907b187471ed7d0, type: 3}
   _spawnTime: 3
   _spawnPoints:

@@ -11,19 +11,19 @@ public class EnemyMovement : MonoBehaviour
    
     
     private Transform _playerPoint;
-    private PlayerHealth _playerHealth;
+    private PlayerHealthController _playerHealthController;
     private CompositeDisposable _subscription;
     
 
-    public void Initialize(PlayerHealth playerHealth)
+    public void Initialize(PlayerHealthController playerHealthController)
     {
-        _playerHealth = playerHealth;
-        _playerPoint = _playerHealth.transform;
+        _playerHealthController = playerHealthController;
+        _playerPoint = _playerHealthController.transform;
     }
     
     void Update()
     {
-        if (_enemyHealthController.CurrentHealth > 0 && _playerHealth.currentHealth > 0)
+        if (_enemyHealthController.CurrentHealth > 0 && _playerHealthController.CurrentHealth > 0)
         {
             _nav.SetDestination(_playerPoint.position);
         }

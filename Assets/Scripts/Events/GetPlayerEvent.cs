@@ -6,12 +6,12 @@ namespace Events
     public class GetPlayerEvent : EventBase
     {
         public Transform PlayerPoint { get; } 
-        public PlayerHealth PlayerHealth { get; }
+        public PlayerHealthController PlayerHealthController { get; }
 
-        public GetPlayerEvent(Transform playerPoint, PlayerHealth playerHealth)
+        public GetPlayerEvent(Transform playerPoint, PlayerHealthController playerHealthController)
         {
             PlayerPoint = playerPoint;
-            PlayerHealth = playerHealth;
+            PlayerHealthController = playerHealthController;
         }
     }
 }
