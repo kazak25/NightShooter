@@ -1145,10 +1145,22 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8235582, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10835390, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 10835390, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
       propertyPath: m_Intensity
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11436894, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
+      propertyPath: _playerRigidbody
+      value: 
+      objectReference: {fileID: 1340605868}
     - target: {fileID: 11479542, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
       propertyPath: damageImage
       value: 
@@ -1163,6 +1175,10 @@ PrefabInstance:
       objectReference: {fileID: 702371792}
     - target: {fileID: 11479542, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
       propertyPath: _playerShooting
+      value: 
+      objectReference: {fileID: 702371791}
+    - target: {fileID: 11479542, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
+      propertyPath: playerShootingController
       value: 
       objectReference: {fileID: 702371791}
     - target: {fileID: 11479542, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
@@ -1217,6 +1233,10 @@ PrefabInstance:
     - target: {fileID: 11479542, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
       propertyPath: HeartDestroyed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 12084070, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13601194, guid: 9b9e637bcdb822540b6927d7936c5155, type: 3}
       propertyPath: m_IsTrigger
@@ -1323,6 +1343,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &790498678 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8235582, guid: 9b9e637bcdb822540b6927d7936c5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 702371790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &790498679 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 10835390, guid: 9b9e637bcdb822540b6927d7936c5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 702371790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &790498680 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 12084070, guid: 9b9e637bcdb822540b6927d7936c5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 702371790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &790498681 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19801260, guid: 9b9e637bcdb822540b6927d7936c5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 702371790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &804529301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,11 +2028,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1c72c60e6cfb84db3586d6df9915d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 1273611591}
-  damageImage: {fileID: 1913536421}
-  deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
-  anim: {fileID: 702371793}
-  playerAudio: {fileID: 1340605860}
+  _healthSlider: {fileID: 1273611591}
+  _damageImage: {fileID: 1913536421}
+  _deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
+  _anim: {fileID: 702371793}
+  _playerAudio: {fileID: 1340605860}
+--- !u!54 &1340605868 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5427354, guid: 9b9e637bcdb822540b6927d7936c5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 702371790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1340605869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340605858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05facb67d6614bb3acdb332b6618b661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gunParticles: {fileID: 790498681}
+  _gunLight: {fileID: 790498679}
+  _gunAudio: {fileID: 790498678}
+  _gunLine: {fileID: 790498680}
 --- !u!1 &1733441410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd,

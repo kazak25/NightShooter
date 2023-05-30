@@ -13,7 +13,7 @@ public class PlayerHealthController : MonoBehaviour
     public int CurrentHealth => _currentHealth;
 
     [SerializeField] private PlayerMovement _playerMovement;
-    [SerializeField] private PlayerShooting _playerShooting;
+    [SerializeField] private PlayerShootingController playerShootingController;
     [SerializeField] private int _startingHealth = 100;
     [SerializeField] private int _currentHealth;
 
@@ -47,13 +47,14 @@ public class PlayerHealthController : MonoBehaviour
     {
         isDead = true;
 
-        _playerShooting.DisableEffects();
-
-        var eventDataRequest = new GetPlayerDeadEvent();
+        var eventDataRequest = new GetDisableEffectsEvent();
         EventStream.Game.Publish(eventDataRequest);
 
+        var eventDataRequest2 = new GetPlayerDeadEvent();
+        EventStream.Game.Publish(eventDataRequest2);
+
         _playerMovement.enabled = false;
-        _playerShooting.enabled = false;
+        playerShootingController.enabled = false;
     }
 
     private void OnCollisionEnter(Collision heart)

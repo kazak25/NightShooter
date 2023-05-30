@@ -6,19 +6,18 @@ using SimpleEventBus.Disposables;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerViewManager : MonoBehaviour
+public class PlayerHealthView : MonoBehaviour
 {
-    [SerializeField] private Slider healthSlider;
-    [SerializeField] private Image damageImage;
-    [SerializeField] private AudioClip deathClip;
-    [SerializeField] private Animator anim;
-    [SerializeField] private AudioSource playerAudio;
+    [SerializeField] private Slider _healthSlider;
+    [SerializeField] private Image _damageImage;
+    [SerializeField] private AudioClip _deathClip;
+    [SerializeField] private Animator _anim;
+    [SerializeField] private AudioSource _playerAudio;
 
     private bool damaged;
     private Color _flashColour = new Color(1f, 0f, 0f, 0.1f);
     private float _flashSpeed = 5f;
-
-
+    
     private CompositeDisposable _subscription;
 
     private void Start()
@@ -28,21 +27,22 @@ public class PlayerViewManager : MonoBehaviour
             EventStream.Game.Subscribe<GetPlayerDeadEvent>(Death),
             EventStream.Game.Subscribe<GetEnemyTakeDamageEvent>(TakeDamageAudio),
             EventStream.Game.Subscribe<GetCurrentHealthEvent>(TakeHealthBonus),
-            EventStream.Game.Subscribe<GetDamageEvent>(GetDamage)
+            EventStream.Game.Subscribe<GetDamageEvent>(GetDamage),
+            EventStream.Game.Subscribe<GetPlayerWalkEvent>(PlayerWalking)
         };
     }
 
     public void Death(GetPlayerDeadEvent data)
     {
-        anim.SetTrigger("Die");
+        _anim.SetTrigger("Die");
 
-        playerAudio.clip = deathClip;
-        playerAudio.Play();
+        _playerAudio.clip = _deathClip;
+        _playerAudio.Play();
     }
 
-    public void TakeDamageAudio(GetEnemyTakeDamageEvent data)
+    private void TakeDamageAudio(GetEnemyTakeDamageEvent data)
     {
-        playerAudio.Play();
+        _playerAudio.Play();
     }
     private void GetDamage(GetDamageEvent data)
     {
@@ -51,18 +51,22 @@ public class PlayerViewManager : MonoBehaviour
 
     private void TakeHealthBonus(GetCurrentHealthEvent data)
     {
-        healthSlider.value = data.CurrentHealth;
+        _healthSlider.value = data.CurrentHealth;
     }
 
+    private void PlayerWalking(GetPlayerWalkEvent data)
+    {
+        _anim.SetBool("IsWalking", data.IsWalking);
+    }
     void Update()
     {
         if (damaged)
         {
-            damageImage.color = _flashColour;
+            _damageImage.color = _flashColour;
         }
         else
         {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, _flashSpeed * Time.deltaTime);
+            _damageImage.color = Color.Lerp(_damageImage.color, Color.clear, _flashSpeed * Time.deltaTime);
         }
 
         damaged = false;
